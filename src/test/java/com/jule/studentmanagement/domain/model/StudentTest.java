@@ -1,5 +1,6 @@
 package com.jule.studentmanagement.domain.model;
 
+import com.jule.studentmanagement.domain.valueObjects.StudentId;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -32,7 +33,7 @@ class StudentTest {
         LocalDateTime updated = LocalDateTime.now();
 
         Student student = Student.fromPersistence(
-                1L, "Ana", "Gomez", birthDate, "555-5678", "Av Siempre Viva 742", true, created, updated
+                StudentId.from(1L), "Ana", "Gomez", birthDate, "555-5678", "Av Siempre Viva 742", true, created, updated
         );
 
         assertThat(student.getFirstName()).isEqualTo("Ana");
@@ -64,9 +65,9 @@ class StudentTest {
     @Test
     void shouldRespectEqualityBasedOnId() {
         LocalDate birthDate = LocalDate.of(2000, 1, 1);
-        Student s1 = Student.fromPersistence(1L, "Juan", "Perez", birthDate, "555", "addr", true, LocalDateTime.now(), LocalDateTime.now());
-        Student s2 = Student.fromPersistence(1L, "Ana", "Gomez", birthDate, "555", "addr", true, LocalDateTime.now(), LocalDateTime.now());
-        Student s3 = Student.fromPersistence(2L, "Ana", "Gomez", birthDate, "555", "addr", true, LocalDateTime.now(), LocalDateTime.now());
+        Student s1 = Student.fromPersistence(StudentId.from(1L), "Juan", "Perez", birthDate, "555", "addr", true, LocalDateTime.now(), LocalDateTime.now());
+        Student s2 = Student.fromPersistence(StudentId.from(1L), "Ana", "Gomez", birthDate, "555", "addr", true, LocalDateTime.now(), LocalDateTime.now());
+        Student s3 = Student.fromPersistence(StudentId.from(2L), "Ana", "Gomez", birthDate, "555", "addr", true, LocalDateTime.now(), LocalDateTime.now());
 
         assertThat(s1).isEqualTo(s2);
         assertThat(s1).isNotEqualTo(s3);

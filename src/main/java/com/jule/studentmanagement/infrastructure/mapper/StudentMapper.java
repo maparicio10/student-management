@@ -1,6 +1,7 @@
 package com.jule.studentmanagement.infrastructure.mapper;
 
 import com.jule.studentmanagement.domain.model.Student;
+import com.jule.studentmanagement.domain.valueObjects.StudentId;
 import com.jule.studentmanagement.infrastructure.dto.StudentDTO;
 import com.jule.studentmanagement.infrastructure.entity.StudentEntity;
 import org.mapstruct.*;
@@ -33,7 +34,7 @@ public interface StudentMapper {
         }
 
         return Student.fromPersistence(
-                entity.getId(),
+                new StudentId(entity.getId()),
                 entity.getFirstName(),
                 entity.getLastName(),
                 entity.getBirthDate(),

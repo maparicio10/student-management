@@ -1,11 +1,13 @@
 package com.jule.studentmanagement.domain.model;
 
+import com.jule.studentmanagement.domain.valueObjects.StudentId;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Student {
-    private final Long id;
+    private final StudentId id;
     private String firstName;
     private String lastName;
     private String email;
@@ -19,7 +21,7 @@ public class Student {
     private LocalDateTime updatedAt;
 
     // Constructor privado
-    private Student(Long id,
+    private Student(StudentId id,
                     String firstName,
                     String lastName,
                     LocalDate birthDate,
@@ -51,7 +53,7 @@ public class Student {
     }
 
     // Reconstrucción desde persistencia
-    public static Student fromPersistence(Long id,
+    public static Student fromPersistence(StudentId id,
                                           String firstName,
                                           String lastName,
                                           LocalDate birthDate,
@@ -125,7 +127,7 @@ public class Student {
         return updatedAt;
     }
 
-    public Long getId() {
+    public StudentId getId() {
         return id;
     }
 
@@ -133,7 +135,7 @@ public class Student {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Student student)) return false;
-        return Objects.equals(id, student.id);
+        return Objects.equals(id.value(), student.id.value());
     }
 
     @Override
