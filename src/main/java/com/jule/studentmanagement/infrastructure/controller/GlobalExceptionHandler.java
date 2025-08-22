@@ -1,7 +1,7 @@
 package com.jule.studentmanagement.infrastructure.controller;
 
-import com.jule.studentmanagement.domain.model.exception.BusinessException;
-import com.jule.studentmanagement.domain.model.exception.ResourceNotFoundException;
+import com.jule.studentmanagement.domain.exception.BusinessException;
+import com.jule.studentmanagement.domain.exception.ResourceNotFoundException;
 import com.jule.studentmanagement.infrastructure.dto.ApiResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

@@ -4,8 +4,8 @@ import com.jule.studentmanagement.application.ports.input.FindAllStudentsWithFil
 import com.jule.studentmanagement.application.ports.input.GetAllStudentsUseCase;
 import com.jule.studentmanagement.application.ports.output.StudentRepositoryPort;
 import com.jule.studentmanagement.domain.model.Student;
-import com.jule.studentmanagement.domain.model.exception.BusinessException;
-import com.jule.studentmanagement.domain.model.exception.ResourceNotFoundException;
+import com.jule.studentmanagement.domain.exception.BusinessException;
+import com.jule.studentmanagement.domain.exception.ResourceNotFoundException;
 import com.jule.studentmanagement.infrastructure.soap.service.ExternalRestService;
 import com.jule.studentmanagement.infrastructure.soap.service.ExternalSoapService;
 import com.jule.studentmanagement.infrastructure.dto.PageDTO;

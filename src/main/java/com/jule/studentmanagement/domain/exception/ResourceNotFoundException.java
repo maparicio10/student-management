@@ -1,4 +1,4 @@
-package com.jule.studentmanagement.domain.model.exception;
+package com.jule.studentmanagement.domain.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {
