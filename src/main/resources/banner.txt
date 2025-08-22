@@ -1,0 +1,8 @@
+${AnsiColor.BLUE}
+,--.   ,--.        ,--.,--.          ,--.
+|   `.'   | ,--,--.`--'|  |,-. ,---. |  |
+|  |'.'|  |' ,-.  |,--.|     /| .-. :|  |
+|  |   |  |\ '-'  ||  ||  \  \\   --.|  |
+`--'   `--' `--`--'`--'`--'`--'`----'`--'
+  ${AnsiColor.GREEN}Autor: Maikel Aparicio (maparicio10@gmail.com) 2025
+  Powered by Spring Boot ${spring-boot.version}
