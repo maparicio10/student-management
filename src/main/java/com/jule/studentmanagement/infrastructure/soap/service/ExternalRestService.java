@@ -1,4 +1,4 @@
-package com.jule.studentmanagement;
+package com.jule.studentmanagement.infrastructure.soap.service;
 
 import com.jule.studentmanagement.infrastructure.dto.ExternalPostDTO;
 import lombok.extern.slf4j.Slf4j;

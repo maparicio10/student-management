@@ -1,7 +1,14 @@
-package com.jule.studentmanagement;
+package com.jule.studentmanagement.application.service;
 
+import com.jule.studentmanagement.application.ports.input.FindAllStudentsWithFilters;
+import com.jule.studentmanagement.application.ports.input.GetAllStudentsUseCase;
+import com.jule.studentmanagement.application.ports.output.StudentRepositoryPort;
+import com.jule.studentmanagement.domain.model.Student;
 import com.jule.studentmanagement.domain.model.exception.BusinessException;
 import com.jule.studentmanagement.domain.model.exception.ResourceNotFoundException;
+import com.jule.studentmanagement.infrastructure.soap.service.ExternalRestService;
+import com.jule.studentmanagement.infrastructure.soap.service.ExternalSoapService;
+import com.jule.studentmanagement.infrastructure.dto.PageDTO;
 import com.jule.studentmanagement.infrastructure.dto.StudentDTO;
 import com.jule.studentmanagement.infrastructure.entity.StudentEntity;
 import com.jule.studentmanagement.infrastructure.mapper.StudentMapper;
@@ -20,21 +27,37 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class StudentService {
+public class StudentService implements GetAllStudentsUseCase, FindAllStudentsWithFilters {
+    private final StudentRepositoryPort studentRepositoryPort;
 
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
     private final ExternalRestService externalRestService;
     private final ExternalSoapService externalSoapService;
 
+    @Override
     public List<StudentDTO> getAllStudents() {
         log.debug("Obteniendo todos los estudiantes");
-        List<StudentEntity> students = studentRepository.findAll();
-        return students.stream()
-                .map(this::enrichStudentData)
-                .collect(Collectors.toList());
+        List<Student> students = studentRepositoryPort.getAllStudents();
+        // TODO: por continuar
+        throw new UnsupportedOperationException("Método no implementado aún");
+//        return students.stream()
+//                .map(this::enrichStudentData)
+//                .collect(Collectors.toList());
     }
 
+    @Override
+    public PageDTO<StudentDTO> findAllStudentsWithFilters(String firstName, String lastName, String email, int page, int size) {
+        return null;
+    }
+
+    //    @Override
+//    public List<StudentDTO> getAllStudents() {
+//        log.debug("Obteniendo todos los estudiantes");
+//        List<Student> students = studentRepositoryPort.getAllStudents();
+//        return students.stream().map(this::enrichStudentData1).collect(Collectors.toList());
+//    }
+//
     public Page<StudentDTO> getStudentsWithFilters(String name, String email,
                                                    String countryCode, Boolean active,
                                                    Pageable pageable) {
@@ -129,6 +152,35 @@ public class StudentService {
         return studentRepository.countStudentsByCountry();
     }
 
+//    private StudentDTO enrichStudentData1(Student student) {
+//        StudentDTO studentDTO = studentMapper.fromStudentToDTO(student);
+//
+//        // Enriquecer con información del país (servicio SOAP)
+//        if (student.getCountryCode() != null) {
+//            try {
+//                studentDTO.setCountryInfo(
+//                        externalSoapService.getCountryInfo(student.getCountryCode())
+//                );
+//            } catch (Exception e) {
+//                log.warn("Error al obtener información del país {}: {}",
+//                        student.getCountryCode(), e.getMessage());
+//            }
+//        }
+//
+//        // Enriquecer con post externo (servicio REST)
+//        if (student.getExternalPostId() != null) {
+//            try {
+//                studentDTO.setExternalPost(
+//                        externalRestService.getPostById(student.getExternalPostId())
+//                );
+//            } catch (Exception e) {
+//                log.warn("Error al obtener post externo {}: {}",
+//                        student.getExternalPostId(), e.getMessage());
+//            }
+//        }
+//
+//        return studentDTO;
+//    }
     private StudentDTO enrichStudentData(StudentEntity student) {
         StudentDTO studentDTO = studentMapper.toDTO(student);
 

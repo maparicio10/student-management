@@ -1,6 +1,6 @@
 package com.jule.studentmanagement.infrastructure.controller;
 
-import com.jule.studentmanagement.StudentService;
+import com.jule.studentmanagement.application.service.StudentService;
 import com.jule.studentmanagement.infrastructure.dto.ApiResponseDTO;
 import com.jule.studentmanagement.infrastructure.dto.StudentDTO;
 import io.swagger.v3.oas.annotations.Operation;

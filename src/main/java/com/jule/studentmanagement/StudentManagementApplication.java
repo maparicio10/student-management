@@ -12,9 +12,9 @@ public class StudentManagementApplication {
 
         SpringApplication.run(StudentManagementApplication.class, args);
         System.out.println("=================================");
-        System.out.println("🚀 Student CRUD API iniciada!");
-        System.out.println("📚 Swagger UI: http://localhost:8080/swagger-ui.html");
-        System.out.println("🔧 H2 Console: http://localhost:8080/h2-console");
+        System.out.println("🚀 Student Management API iniciada!");
+//        System.out.println("📚 Swagger UI: http://localhost:8080/swagger-ui.html");
+//        System.out.println("🔧 H2 Console: http://localhost:8080/h2-console");
         System.out.println("🌐 API Base: http://localhost:8080/api/students");
         System.out.println("=================================");
     }
